@@ -21,7 +21,9 @@ def twoSum(nums, target):
 answer = twoSum([3, 2, 4], 6)
 print(answer)
 
-''' results ->
+'''
+results ->
+
 Runtime: 548 ms, faster than 28.38% of Python3 online submissions for Two Sum.
 Memory Usage: 14.5 MB, less than 100.00% of Python3 online submissions for Two Sum.
 '''
