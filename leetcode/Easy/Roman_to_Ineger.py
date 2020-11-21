@@ -58,3 +58,10 @@ def romanToInt(self, s: str) -> int:
         sum = sum + results[i]
 
     return sum
+
+
+'''
+result ->
+Runtime: 64 ms, faster than 5.92% of Python3 online submissions for Roman to Integer.
+Memory Usage: 14.4 MB, less than 10.73% of Python3 online submissions for Roman to Integer.
+'''
