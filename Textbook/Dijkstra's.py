@@ -10,11 +10,9 @@ class Graph():
                       for row in range(vertices)]
 
     def printSolution(self, dist):
-        print
-        "Vertex \tDistance from Source"
+        print("Vertex \tDistance from Source")
         for node in range(self.V):
-            print
-            node, "\t", dist[node]
+            print(node, "\t", dist[node])
 
             # A utility function to find the vertex with
 
@@ -23,7 +21,7 @@ class Graph():
     def minDistance(self, dist, sptSet):
 
         # Initilaize minimum distance for next node
-        min = sys.maxint
+        min = sys.maxsize
 
         # Search not nearest vertex not in the
         # shortest path tree
@@ -40,7 +38,7 @@ class Graph():
     # using adjacency matrix representation
     def dijkstra(self, src):
 
-        dist = [sys.maxint] * self.V
+        dist = [sys.maxsize] * self.V
         dist[src] = 0
         sptSet = [False] * self.V
 
@@ -79,8 +77,6 @@ g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
            [0, 0, 0, 0, 0, 2, 0, 1, 6],
            [8, 11, 0, 0, 0, 0, 1, 0, 7],
            [0, 0, 2, 0, 0, 0, 6, 7, 0]
-           ];
+           ]
 
-g.dijkstra(0);
-
-# This code is contributed by Divyanshu Mehta
+g.dijkstra(0)
