@@ -1,30 +1,31 @@
+# 20151594 함승우 Dijkstra's Algorithm
 
 import sys
 
+# 1. 간선이 없는 vertex를 INF로 처리.
+INF = 999
 
+# 2. Graph class 선언.
 class Graph():
 
+    # 3. 초기화
     def __init__(self, vertices):
         self.V = vertices
         self.graph = [[0 for column in range(vertices)]
                       for row in range(vertices)]
 
+    # 4. 출력부.
     def printSolution(self, dist):
-        print("Vertex \tDistance from Source")
+        print("\nF -> ")
         for node in range(self.V):
-            print(node, "\t", dist[node])
+            print("v1 to v{0}".format(node+1), "-> cost : ", dist[node])
 
-            # A utility function to find the vertex with
 
-    # minimum distance value, from the set of vertices
-    # not yet included in shortest path tree
+    # 5. 최소 거릿 값을 계산.
     def minDistance(self, dist, sptSet):
 
-        # Initilaize minimum distance for next node
         min = sys.maxsize
 
-        # Search not nearest vertex not in the
-        # shortest path tree
         for v in range(self.V):
             if dist[v] < min and sptSet[v] == False:
                 min = dist[v]
@@ -32,10 +33,7 @@ class Graph():
 
         return min_index
 
-        # Funtion that implements Dijkstra's single source
-
-    # shortest path algorithm for a graph represented
-    # using adjacency matrix representation
+    # 6. 다익스트라 알고리즘 실행.
     def dijkstra(self, src):
 
         dist = [sys.maxsize] * self.V
@@ -43,20 +41,12 @@ class Graph():
         sptSet = [False] * self.V
 
         for cout in range(self.V):
-
-            # Pick the minimum distance vertex from
-            # the set of vertices not yet processed.
-            # u is always equal to src in first iteration
             u = self.minDistance(dist, sptSet)
 
-            # Put the minimum distance vertex in the
-            # shotest path tree
+            # 7. 목적지까지 최소 거리를 넣는다.
             sptSet[u] = True
 
-            # Update dist value of the adjacent vertices
-            # of the picked vertex only if the current
-            # distance is greater than new distance and
-            # the vertex in not in the shotest path tree
+            # 8. 갱신.
             for v in range(self.V):
                 if self.graph[u][v] > 0 and sptSet[v] == False and \
                         dist[v] > dist[u] + self.graph[u][v]:
@@ -64,19 +54,27 @@ class Graph():
 
         self.printSolution(dist)
 
-    # Driver program
+"""
+# 9. 교재 데이터.
+g = Graph(5)
+g.graph = [
+    [0, 7, 4, 6, 1],
+    [7, 0, 2, 3, INF],
+    [4, 2, 0, 5, INF],
+    [6, 3, 5, 0, 1],
+    [1, INF, INF, 1, 0]
+]
+"""
 
+# 10. 자작 데이터.
+g = Graph(5)
+g.graph = [
+    [0, 1, 8, 4, 2],
+    [1, 0, INF, 2, INF],
+    [8, INF, 0, 3, 3],
+    [4, 2, 3, 0, INF],
+    [2, INF, 3, INF, 0]
+]
 
-g = Graph(9)
-g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
-           [4, 0, 8, 0, 0, 0, 0, 11, 0],
-           [0, 8, 0, 7, 0, 4, 0, 0, 2],
-           [0, 0, 7, 0, 9, 14, 0, 0, 0],
-           [0, 0, 0, 9, 0, 10, 0, 0, 0],
-           [0, 0, 4, 14, 10, 0, 2, 0, 0],
-           [0, 0, 0, 0, 0, 2, 0, 1, 6],
-           [8, 11, 0, 0, 0, 0, 1, 0, 7],
-           [0, 0, 2, 0, 0, 0, 6, 7, 0]
-           ]
-
+# 11. 실행.
 g.dijkstra(0)

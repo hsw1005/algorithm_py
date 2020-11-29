@@ -1,108 +1,98 @@
+# 20151594 함승우 Kruskal's Algorithm
 
-
+# 1. graph class 생성.
 class Graph:
 
+    # 2. 초기화
     def __init__(self, vertices):
-        self.V = vertices  # No. of vertices
-        self.graph = []  # default dictionary
-        # to store graph
+        self.V = vertices
+        self.graph = []
 
-    # function to add an edge to graph
+    # 3. u, v노드와 w edge를 더한다.
     def addEdge(self, u, v, w):
         self.graph.append([u, v, w])
 
-    # A utility function to find set of an element i
-    # (uses path compression technique)
+    # 4. 부모 노드를 찾는 함수.
     def find(self, parent, i):
         if parent[i] == i:
             return i
         return self.find(parent, parent[i])
 
-    # A function that does union of two sets of x and y
-    # (uses union by rank)
+    # 5. 부모 노드와 자식 노드를 합치는 함수.
     def union(self, parent, rank, x, y):
         xroot = self.find(parent, x)
         yroot = self.find(parent, y)
 
-        # Attach smaller rank tree under root of
-        # high rank tree (Union by Rank)
+
         if rank[xroot] < rank[yroot]:
             parent[xroot] = yroot
         elif rank[xroot] > rank[yroot]:
             parent[yroot] = xroot
-
-        # If ranks are same, then make one as root
-        # and increment its rank by one
         else:
             parent[yroot] = xroot
             rank[xroot] += 1
 
-    # The main function to construct MST using Kruskal's
-    # algorithm
+
+    # 6. kruskal minimum spanning tree.
     def KruskalMST(self):
 
-        result = []  # This will store the resultant MST
-
-        # An index variable, used for sorted edges
+        result = []
         i = 0
-
-        # An index variable, used for result[]
         e = 0
 
-        # Step 1:  Sort all the edges in 
-        # non-decreasing order of their
-        # weight.  If we are not allowed to change the
-        # given graph, we can create a copy of graph
+        # 7. graph를 w값, 즉, item[2] == ([u, v, w])을 기준으로 정렬한다.
         self.graph = sorted(self.graph,
                             key=lambda item: item[2])
 
         parent = []
         rank = []
 
-        # Create V subsets with single elements
         for node in range(self.V):
             parent.append(node)
             rank.append(0)
 
-        # Number of edges to be taken is equal to V-1
+        # 9. node의 수에서 -1만큼 (edge 수만큼)
         while e < self.V - 1:
 
-            # Step 2: Pick the smallest edge and increment
-            # the index for next iteration
+            # 가장 작은 cost를 선택.
             u, v, w = self.graph[i]
             i = i + 1
             x = self.find(parent, u)
             y = self.find(parent, v)
 
-            # If including this edge does't
-            #  cause cycle, include it in result 
-            #  and increment the indexof result 
-            # for next edge
+            # 10. cycle을 확인. cycle이 발생하지 않으면 추가.
             if x != y:
                 e = e + 1
                 result.append([u, v, w])
                 self.union(parent, rank, x, y)
-            # Else discard the edge
 
         minimumCost = 0
-        print("Edges in the constructed MST")
+        print("\nF -> ")
         for u, v, weight in result:
             minimumCost += weight
-            print("%d -- %d == %d" % (u, v, weight))
-        print("Minimum Spanning Tree", minimumCost)
+            print("%d[node]  -- %d[node] ==> %d[cost]" % (u+1, v+1, weight))
+        print("\nMST는 -> ", minimumCost)
 
 
-# Driver code
+# 11. 교재 데이터 입력
+#g = Graph(5)
+#g.addEdge(0, 1, 1)
+#g.addEdge(0, 2, 3)
+#g.addEdge(1, 2, 3)
+#g.addEdge(1, 3, 6)
+#g.addEdge(2, 3, 4)
+#g.addEdge(2, 4, 2)
+#g.addEdge(3, 4, 5)
+
+# 12. 자작 데이터 입력
 g = Graph(5)
-g.addEdge(0, 1, 1)
-g.addEdge(0, 2, 3)
-g.addEdge(1, 2, 3)
-g.addEdge(1, 3, 6)
-g.addEdge(2, 3, 4)
-g.addEdge(2, 4, 2)
-g.addEdge(3, 4, 5)
+g.addEdge(2, 3, 1)
+g.addEdge(0, 1, 2)
+g.addEdge(3, 4, 2)
+g.addEdge(1, 3, 3)
+g.addEdge(0, 2, 4)
+g.addEdge(2, 4, 5)
+g.addEdge(1, 3, 5)
 
-# Function call
+# 13. 함수 실행.
 g.KruskalMST()
-
-# This code is contributed by Neelam Yadav
