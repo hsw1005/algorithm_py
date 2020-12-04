@@ -15,7 +15,7 @@ class Graph():
                       for row in range(vertices)]
 
     # 4. 출력부.
-    def printSolution(self, dist):
+    def printSolution(self, dist, touch):
         print("\nF -> ")
         for node in range(self.V):
             print("v1 to v{0}".format(node+1), "-> cost : ", dist[node])
