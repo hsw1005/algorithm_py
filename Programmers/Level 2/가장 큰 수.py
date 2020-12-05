@@ -18,7 +18,7 @@ solution()
 
 """
 map 사용 :
-for idx in range(0, len(cases)):
+for idx in range(0, len(cases)):sudo a
     cases[idx] = list(cases[idx])
     
 -> cases = list(map(list, cases))
