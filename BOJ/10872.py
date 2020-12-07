@@ -1,3 +1,5 @@
+# 팩토리얼
+
 n = int(input())
 
 answer = 1

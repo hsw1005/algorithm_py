@@ -1,3 +1,5 @@
+# OX 퀴즈
+
 str1 = "OOXXOXXOOO"
 str2 = "OOXXOOXXOO"
 str3 = "OXOXOXOXOXOXOX"
