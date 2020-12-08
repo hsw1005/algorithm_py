@@ -50,3 +50,4 @@ include = [False] * (n+1)
 
 knapsack(0, 0, 0)
 print(bestset[1:len(bestset)])
+print(maxprofit)
