@@ -2,10 +2,21 @@
 
 n = int(input())
 words = []
+sorted = []
+
 for i in range(n):
-    words.append(list(map(str, input().split())))
-words = set(words)
-print(words)
+    words.append(input())
+
+words = list(set(words))
+
+for word in words:
+    sorted.append((len(word), word))
+
+sorted.sort()
+
+for _, word in sorted:
+    print(word)
+
 
 
 """
@@ -24,3 +35,4 @@ wait
 im
 yours
 """
+
