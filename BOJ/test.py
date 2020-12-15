@@ -1,2 +1,2 @@
-n = input()
-print(ord(n))
+n = input().split()
+print(n[0]+'\b')

@@ -1,5 +1,5 @@
 # 큐
-# 직접 구현
+# 직접 구현 ( class )
 
 import sys
 input = sys.stdin.readline
