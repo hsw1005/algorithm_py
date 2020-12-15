@@ -1,4 +1,5 @@
 # 수 찾기
+# 이진탐색
 
 n = int(input())
 n_arr = list(map(int, input().split()))
@@ -7,7 +8,6 @@ n_arr.sort()
 
 m = int(input())
 m_arr = list(map(int, input().split()))
-
 
 for number in m_arr:
     start = 0
