@@ -1,19 +1,24 @@
 # 나이순 정렬
+# lambda
+
+import sys
+input = sys.stdin.readline
+
 
 n = int(input())
 
 temp = []
 
 for i in range(n):
-    age, name = input().split()
-    temp.append(list(int(age), name))
+    age, name = map(str, input().split())
+    temp.append((int(age), name))
 
-sorted = []
+#print(temp) -> [(21, 'Junkyu'), (21, 'Dohyun'), (20, 'Sunyoung')]
+temp.sort(key=lambda sorted: sorted[0])
+#print(temp) -> [(20, 'Sunyoung'), (21, 'Junkyu'), (21, 'Dohyun')]
 
-temp.sort()
-
-for i in range(n):
-    print(temp[i])
+for sorted in temp:
+    print(sorted[0], sorted[1])
 
 """
 3
