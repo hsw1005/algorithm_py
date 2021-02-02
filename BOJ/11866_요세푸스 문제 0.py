@@ -1,4 +1,4 @@
-# 요세푸스 문제 0
+# 요세푸스 2.문제 0
 
 import sys
 input = sys.stdin.readline

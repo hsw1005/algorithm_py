@@ -59,7 +59,7 @@ def order(p, i, j):
         order(p, k+1, j)
         print(")", end="")
 
-# 11. 교재 예제 데이터 입력
+# 11. 교재 1.예제 데이터 입력
 example_arr = [5, 2, 3, 4, 6, 7, 8]
 example_size = len(example_arr)
 # arr는 아래 여러 행렬의 크기와 같음

@@ -1,6 +1,6 @@
 # re
 # 다리 놓기
-# 조합(Combinations) 문제
+# 조합(Combinations) 2.문제
 
 
 import sys
