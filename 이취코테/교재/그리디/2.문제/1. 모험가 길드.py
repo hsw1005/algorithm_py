@@ -1,13 +1,17 @@
 n = int(input())
-people = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
+arr.sort()
+group = 0
+person = 0
 
-print(n)
-print(people)
-
-people = people.sorted()
-
-print(people)
+for i in range(0, n):
+    fear = arr[i]
+    person += 1
+    if fear == person:
+        group += 1
+        person = 0
+print(group)
 
 
 """
