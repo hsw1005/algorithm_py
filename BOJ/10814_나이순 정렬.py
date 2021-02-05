@@ -1,4 +1,4 @@
-# 나이순 정렬
+z# 나이순 정렬
 # lambda
 
 import sys
