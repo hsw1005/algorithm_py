@@ -1,36 +1,32 @@
 s = input()
 arr = []
-one = 0
 zero = 0
+one = 0
+
+if s[0] == '0':
+    zero += 1
+else:
+    one += 1
 
 for i in range(0, len(s)):
     arr.append(s[i])
-    if arr[i] == '1':
-        one += 1
-    else:
-        zero += 1
 
-count = 0
-
-if one > zero:
-    for i in range(0, len(arr)-1):
+for i in range(0, len(arr)-1):
+    if arr[i] != arr[i+1]:
         if arr[i] == '0':
-            if arr[i] != arr[i+1]:
-                count += 1
-    print(count)
+            zero += 1
+            #print("zero", zero)
+        else:
+            one += 1
+            #print("one", one)
+    else:
+        continue
 
-elif one < zero:
-    for i in range(0, len(arr)-1):
-        if arr[i] == '1':
-            if arr[i] != arr[i+1]:
-                count += 1
-    print(count)
+if one >= zero:
+    print(one)
+elif one <  zero:
+    print(zero)
 
-else:
-    for i in range(0, len(arr)-1):
-        if arr[i] != arr[i+1]:
-            count += 1
-    print(count//2 + 1)
 
 
 """
