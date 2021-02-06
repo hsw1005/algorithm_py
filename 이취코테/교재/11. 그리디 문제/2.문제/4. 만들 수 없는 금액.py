@@ -1,9 +1,15 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
-print(n)
-print(arr)
+arr.sort()
 
+target = 1
+for coin in arr:
+    if target < coin:
+        break
+    target += coin
+
+print(target)
 
 """
 5

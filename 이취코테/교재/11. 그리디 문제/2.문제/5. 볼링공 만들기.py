@@ -1,8 +1,14 @@
-
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
 
-print(arr)
+count = 0
+
+for i in range(0, n):
+    for j in range(i):
+        if arr[i] != arr[j]:
+            count += 1
+
+print(count)
 
 
 """
