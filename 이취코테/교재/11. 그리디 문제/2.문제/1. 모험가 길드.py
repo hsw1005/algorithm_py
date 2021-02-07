@@ -2,6 +2,7 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 arr.sort()
+
 group = 0
 person = 0
 

@@ -22,10 +22,7 @@ for i in range(0, len(arr)-1):
     else:
         continue
 
-if one >= zero:
-    print(one)
-elif one <  zero:
-    print(zero)
+print(min(one, zero))
 
 
 
