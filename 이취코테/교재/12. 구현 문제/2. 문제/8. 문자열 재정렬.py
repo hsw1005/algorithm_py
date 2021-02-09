@@ -18,6 +18,8 @@ alphabet.sort()
 
 print("".join(alphabet)+str(sum))
 
+
+
 """
 K1KA5CB7
 AJKDLSI412K4JSJ9D
