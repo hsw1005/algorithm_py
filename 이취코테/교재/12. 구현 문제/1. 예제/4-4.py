@@ -9,7 +9,11 @@ for i in range(0, n):
 # idx로 접근하기 -> (dx, dy)
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
-count = 0
+count = 1
+is_visited = 0
+
+where = (r, c)
+val = arr[r][c]
 
 # checker -> 0, 1을 확인하는 것. -> arr[r][c] 값을 사용.
 # character -> 직접 움직이는 것. -> r, c 좌표를 사용.
@@ -20,20 +24,33 @@ count = 0
 # 4. flag == 3인 경우, 방향을 유지하고 한 칸 뒤로 간다. -> 북: (1, 0) 동: (0, -1) 남: (-1, 0) 서: (0, 1)를 더한다.
 # 5. 이렇게 더한 북, 동, 남, 서가 1인 경우 즉, 바다인 경우 움직임을 멈춘다.
 
-def turn(r, c, d):
-    r = r+dx[d]
-    c = c+dy[d]
 
-    return r, c
+def checker(r, c, d):
+    if arr[r+dx[d]][c+dy[d]] == 0:  # 0(육지)라면,
+        return True
+    else:                           # 1(바다) 또는 2(이미 방문) 이라면,
+        return False
+
+arr[r][c] = 2
+while True:
+    flag = checker(r, c, d)
+    if flag:
+        r = r+dx[d]
+        c = c+dy[d]
+        where = (r, c)
+        print(where)
+        arr[r][c] = 2
+        count += 1
+    else:
+        d += 1
+        d = d % 4
+        is_visited += 1
 
 
+for i in range(0, len(arr)):
+    print(arr[i])
 
-
-
-
-print(n, m)
-print(r, c, d)
-print(arr)
+print(count)
 
 """
 4 4
@@ -42,4 +59,28 @@ print(arr)
 1 0 0 1
 1 1 0 1
 1 1 1 1
+"""
+"""
+5 5
+2 3 0
+1 1 1 1 1
+1 0 0 0 1
+1 0 1 0 1
+1 0 0 0 1
+1 1 1 1 1
+"""
+"""
+11 10
+5 3 0
+1 1 1 1 1 1 1 1 1 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0 1
+1 1 1 1 1 1 1 1 1 1
 """

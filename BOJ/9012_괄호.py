@@ -1,16 +1,23 @@
 # 9012
-import sys
-input = sys.stdin.readline
+num = int(input())
 
-n = int(input())
-arr = []
+for i in range(num):
+    b = input()
+    s = list(b)
+    sum = 0
+    for j in s:
+        if j == "(":
+            sum += 1
+        elif j == ")":
+            sum -= 1
+        if sum < 0:
+            print("NO")
+            break
 
-
-for i in range(n):
-    s = input().split()
-    arr.append(s[0])
-
-
+    if sum > 0:
+        print("NO")
+    elif sum == 0:
+        print("YES")
 
 
 
