@@ -25,5 +25,10 @@ for i in range(0, len(arr)-1):
             continue
 
 
-print(temp)
+
 print(len(temp))
+
+"""
+6
+10 20 10 30 20 50
+"""
