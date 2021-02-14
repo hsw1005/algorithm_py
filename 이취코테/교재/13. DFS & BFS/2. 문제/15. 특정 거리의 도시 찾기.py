@@ -1,32 +1,30 @@
 n, m, k, x = map(int, input().split())
 
-graph = []
-matrix = [[0] * n for _ in range(n)]
+graph = [[]]
+visited = [False] * (n+1)
+matrix = [[0] * (n+1) for _ in range(n+1)]
 
-for i in range(0, m):
-    graph.append(list(map(int, input().split())))
-    print(graph)
-
-for i in range(0, m):
-    matrix[graph[i][0]-1][graph[i][1]-1] = 1
-
+for i in range(m):
+    xy = list(map(int, input().split()))
+    graph.append(xy)
+    matrix[xy[0]][xy[1]] = 1
 print(graph)
+
 for i in range(0, len(matrix)):
     print(matrix[i])
 
-def dfs(graph, v, visited):
+def dfs(v, count):
     visited[v] = True
-    print(v, end=' ')
+    print(v, end=" ")
+    for i in range(1, n+1):
+        if visited[i] == 0 and matrix[v][i] == 1:
+            count += 1
+            if count == k:
+                print(i)
+            dfs(i, count)
 
-    for i in graph[v]:
-        if not visited[i]:
-            dfs(graph, i, visited)
-
-visited = [False] * (n+1)
-
-dfs(graph, x, visited)
-
-
+count = 0
+dfs(x, count)
 
 """
 4 4 2 1
