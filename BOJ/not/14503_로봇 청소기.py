@@ -4,7 +4,7 @@ n, m = map(int, input().split())
 r, c, d = map(int, input().split())
 
 matrix = []
-global count = 0
+global count
 
 for i in range(n):
     matrix.append(list(map(int, input().split())))
