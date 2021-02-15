@@ -1,5 +1,6 @@
 n = int(input())
 m = int(input())
+visited = [False] * (n+1)
 
 matrix = [[0] * (n+1) for _ in range(n+1)]
 graph = [[]]
@@ -16,8 +17,6 @@ def dfs(v):
     for i in range(1, n+1):
         if visited[i] == 0 and matrix[v][i] == 1:
             dfs(i)
-
-visited = [False] * (n+1)
 
 dfs(1)
 
