@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10000)
+input = sys.stdin.readline
 n, m = map(int, input().split())
 
 matrix = [[0] * (n+1) for _ in range(n+1)]
@@ -12,19 +15,20 @@ visited = [False] * (n+1)
 
 def dfs(v):
     visited[v] = True
-    print(v, end=" ")
+    #print(v, end=" ")
     for i in range(1, n+1):
         if visited[i] == 0 and matrix[v][i] == 1:
             dfs(i)
 
-for i in range(0, len(matrix)):
-    print(matrix[i])
+count = 0
+for i in range(1, len(visited)):
+    if visited[i] == False:
+        dfs(i)
+        count += 1
+    else:
+        continue
 
-arr = [i+1 for i in range(n)]
-
-for i in range(1, n+1):
-    dfs(i)
-    print('\n')
+print(count)
 
 
 """
