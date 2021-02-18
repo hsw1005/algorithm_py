@@ -1,4 +1,4 @@
-# 문제 똑바로 읽기...
+# 문제 똑바로 읽기..
 
 import sys
 input = sys.stdin.readline
