@@ -1,22 +1,24 @@
-import sys
+import random
+N = int(input())
 
-input = sys.stdin.readline
-
-n = int(input())
 arr = []
-for i in range(n):
-    arr.append(int(input()))
+if N % 2 != 0:
+    arr.append(0)
 
-arr.sort()
+while len(arr) != N:
+    number = random.randint(1, 100)
+    print(number)
+    if number in arr:
+        print("hi", number)
+        continue
+    arr.append(number)
+    arr.append(number*(-1))
+    arr = list(set(arr))
 
+
+sum = 0
 for i in range(0, len(arr)):
-    print(arr[i])
-
-"""
-5
-5
-4
-3
-2
-1
-"""
+    sum += arr[i]
+print(sum)
+print(arr)
+print(len(arr))
