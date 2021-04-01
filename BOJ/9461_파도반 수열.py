@@ -6,7 +6,6 @@ arr = []
 for i in range(t):
     arr.append(int(input()))
 
-
 p = [1,1,1,2,2]
 for i in range(5, 101):
     p.append(p[i-1] + p[i-5])
