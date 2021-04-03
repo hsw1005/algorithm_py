@@ -4,7 +4,6 @@ graph = []
 for i in range(n):
     graph.append(list(map(int, input())))
 
-
 def dfs(x, y):
     if x <= -1 or x >= n or y <= -1 or y >= m:
         return False
@@ -27,7 +26,6 @@ for i in range(n):
             result += 1
 
 print(result)
-
 
 """
 15 14
