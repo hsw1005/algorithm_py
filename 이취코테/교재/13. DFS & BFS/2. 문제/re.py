@@ -1,3 +1,4 @@
+# 특정 거리의 도시
 from collections import deque
 
 n, m, k, x = map(int, input().split())
@@ -18,7 +19,7 @@ while q:
             distance[next_node] = distance[now] + 1
             q.append(next_node)
 
-check = False
+check = True
 for i in range(1, n+1):
     if distance[i] == k:
         print(i)
@@ -26,7 +27,6 @@ for i in range(1, n+1):
 
 if check == False:
     print(-1)
-
 
 """
 4 4 2 1
