@@ -1,39 +1,21 @@
-n, m = map(int, input().split())
-graph = []
-for i in range(0, n):
-    graph.append(list(map(int, input().split())))
+# 네이버 검색 API예제는 블로그를 비롯 전문자료까지 호출방법이 동일하므로 blog검색만 대표로 예제를 올렸습니다.
+# 네이버 검색 Open API 예제 - 블로그 검색
+import os
+import sys
+import urllib.request
+client_id = "7Ix94xOYHdbd9IkH_067"
+client_secret = "B6fWwxpEkK"
+encText = urllib.parse.quote("을지로 맛집")
+url = "https://openapi.naver.com/v1/search/blog?query=" + encText # json 결과
+# url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # xml 결과
+request = urllib.request.Request(url)
+request.add_header("X-Naver-Client-Id",client_id)
+request.add_header("X-Naver-Client-Secret",client_secret)
+response = urllib.request.urlopen(request)
+rescode = response.getcode()
+if(rescode==200):
+    response_body = response.read()
+    print(response_body.decode('utf-8'))
+else:
+    print("Error Code:" + rescode)
 
-def dfs(x, y):
-    if x <= -1 or x >= n or y <= -1 or y >= m:
-        return False
-
-    if graph[x][y] == 0:
-        graph[x][y] = 2
-        dfs(x-1, y)
-        dfs(x, y-1)
-        dfs(x+1, y)
-        dfs(x, y+1)
-        return True
-
-    return False
-
-result = 0
-for i in range(n):
-    for j in range(m):
-        if dfs(i, j) == True:
-            result += 1
-
-for i in range(0, len(graph)):
-    print(graph[i])
-
-
-"""
-7 7
-2 0 0 0 1 1 0
-0 0 1 0 1 2 0
-0 1 1 0 1 0 0
-0 1 0 0 0 0 0
-0 0 0 0 0 1 1
-0 1 0 0 0 0 0
-0 1 0 0 0 0 0
-"""
