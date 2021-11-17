@@ -26,10 +26,7 @@ def dfs(x, y, vi):
         dfs(x+1, y, vi)
         dfs(x, y+1, vi)
         return True
-
     return False
-
-
 
 result = 0
 for i in range(n):

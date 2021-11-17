@@ -15,7 +15,6 @@ def dfs(x, y):
         dfs(x+1, y)
         dfs(x, y+1)
         return True
-
     return False
 
 result = 0
