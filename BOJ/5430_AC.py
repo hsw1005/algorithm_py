@@ -18,13 +18,34 @@ commands = []
 nums = []
 temp_arrs = []
 for _ in range(round):
-    command = input()
     commands.append(input())
-    nums.append(int(input()))
+    nums.append(input())
     str = input().lstrip("[").rstrip("]").split(",")
     temp_arrs.append(str)
-print(commands, nums, temp_arrs)
+#print(commands, nums, temp_arrs)
+print(temp_arrs)
 l = len(temp_arrs)
 
-for command in commands:
-    pass
+for idx, command in enumerate(commands):
+    comm = list(command)
+    while True:
+        try:
+            if len(comm) != 0:
+                com = comm.pop(0)
+                if com == "R":
+                    temp_arrs[idx] = temp_arrs[idx][::-1]
+                if com == "D":
+                    if len(temp_arrs[idx]) != 0:
+                        temp_arrs[idx].pop(0)
+                    else:
+                        print("error")
+                        continue
+
+                if len(comm) == 0:
+                    print(temp_arrs[idx])
+                    break
+
+        except:
+            print("error")
+            break
+
