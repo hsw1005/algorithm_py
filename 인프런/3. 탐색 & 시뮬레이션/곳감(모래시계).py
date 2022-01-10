@@ -24,8 +24,16 @@ for command in commands:
         for _ in range(command[2]):
             matrix[command[0]-1] = matrix[command[0]-1][-1:] + matrix[command[0]-1][:-1]
 
-l = len(matrix)
-mid = n // 2
-for i in range(l):
-    for j in range(l):
-        
+res = 0
+s = 0
+e = n - 1
+for i in range(n):
+    for j in range(s, e + 1):
+        res += matrix[i][j]
+    if i < n // 2:
+        s += 1
+        e -= 1
+    else:
+        s -= 1
+        e += 1
+print(res)
